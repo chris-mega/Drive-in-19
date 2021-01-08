@@ -5,22 +5,23 @@ using UnityEngine;
 public class Car : MonoBehaviour
 {
     [SerializeField] private float speed = 2f;
-    [SerializeField] private float init_x = 4f;
-    [SerializeField] private float init_y = 0.5f;
-    [SerializeField] private float init_z = -6f;
     [SerializeField] private float scale = 50;
+    [SerializeField] private Vector3 entranceCoord = new Vector3(4f, 0.5f, -6f);
+    [SerializeField] private Vector3 stopCoord = new Vector3(-2.5f, 0.5f, -6f);
+    private int stage = 0;
     // Start is called before the first frame update
-    void Start()
-    {
-        transform.position = new Vector3(init_x, init_y, init_z);
+    void Start() {
+        transform.position = entranceCoord;
         transform.localScale = new Vector3(scale, scale, scale);
         transform.Rotate(0, 180, 0, Space.Self);
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        transform.Translate(Vector3.left * speed * Time.deltaTime, Space.World);
-
+    void Update() {
+        if (stage == 0) {
+            if(Vector3.Distance(transform.position, stopCoord) >= 0.01f) {
+                transform.Translate(Vector3.left * speed * Time.deltaTime, Space.World);
+            }
+        }
     }
 }

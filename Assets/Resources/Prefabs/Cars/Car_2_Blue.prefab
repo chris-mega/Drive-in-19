@@ -174,9 +174,10 @@ GameObject:
   - component: {fileID: 3324316}
   - component: {fileID: 2315196}
   - component: {fileID: 5545149846882516690}
+  - component: {fileID: 3840595877166509687}
   m_Layer: 0
   m_Name: Car_2_Blue
-  m_TagString: Untagged
+  m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -261,9 +262,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  init_x: 4
-  init_y: 0.4
-  init_z: -6
+  scale: 50
+  entranceCoord: {x: 4, y: 0.5, z: -6}
+  stopCoord: {x: -2.5, y: 0.5, z: -6}
+--- !u!65 &3840595877166509687
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160038}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.052, y: 0.015, z: 0.02}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &181436
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private float waitTimeSpawnCar = 5;
     [SerializeField] private bool playerAlive = true;
-    [SerializeField] private bool queueFull = false;
+    [SerializeField] private int queueCurr = 0;
     [SerializeField] private int maxQueue = 5;
     private static GameObject[] carTypes;
     // Start is called before the first frame update
@@ -26,10 +26,11 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator SpawnCarRoutine()
     {
-        while (playerAlive && !queueFull)
+        while (playerAlive && queueCurr < maxQueue)
         {
             int carIndex = Random.Range(0, carTypes.Length);
             GameObject newCar = Instantiate(carTypes[carIndex], new Vector3(-1, 0, -6), carTypes[carIndex].transform.rotation);
+            queueCurr++;
             yield return new WaitForSeconds(waitTimeSpawnCar);
         }
     }
