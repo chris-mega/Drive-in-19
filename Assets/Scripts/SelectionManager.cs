@@ -31,12 +31,17 @@ public class SelectionManager : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if(Physics.Raycast(ray, out hit)) {
-                var selection = hit.transform;
-                ExchangeMaterial(prevSelect, prevMaterial);
-                if(selection != prevSelect && selection.CompareTag(selectableTag)) {
+                var selection = hit.transform;   
+                if (selection != prevSelect && selection.CompareTag(selectableTag)) {
+                    // select another car
+                    ExchangeMaterial(prevSelect, prevMaterial);
                     prevMaterial = ExchangeMaterial(selection, highlightMaterial);
                     prevSelect = selection;
+                } else if (prevSelect != null && selection.CompareTag("Floor")) {
+                    Car theCar = prevSelect.GetComponent<Car>();
+                    theCar.MoveToPoint(hit.point);
                 } else {
+                    ExchangeMaterial(prevSelect, prevMaterial);
                     prevSelect = null;
                     prevMaterial = null;
                 }        

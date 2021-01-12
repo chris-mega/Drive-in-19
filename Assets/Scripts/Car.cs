@@ -21,7 +21,12 @@ public class Car : MonoBehaviour
         if (stage == 0) {
             if(Vector3.Distance(transform.position, stopCoord) >= 0.01f) {
                 transform.Translate(Vector3.left * speed * Time.deltaTime, Space.World);
-            }
+            } else stage = 1;
         }
+    }
+
+    public void MoveToPoint(Vector3 point){
+        if (stage == 1)
+            transform.position = new Vector3(point.x, transform.position.y, point.z);
     }
 }
