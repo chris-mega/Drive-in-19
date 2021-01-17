@@ -34,4 +34,9 @@ public class SpawnManager : MonoBehaviour
             yield return new WaitForSeconds(waitTimeSpawnCar);
         }
     }
+
+    public void OnPlayerDeath() {
+        playerAlive = false;
+        print("Player is dead");
+    }
 }
